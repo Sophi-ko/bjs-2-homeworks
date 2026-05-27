@@ -20,18 +20,17 @@ class Triangle {
         this.a = a;
         this.b = b;
         this.c = c;
-        if(this.a > this.b + this.c || this.b > this.a + this.c || this.c > this.a + this.b) {
+        if(a > b + c || b > a + c || c > a + b) {
             throw new Error ('Треугольник с такими сторонами не существует');
         };
     }
 
     get perimeter() {
-        let p = this.a + this.b + this.c;
-        return p;
+        return this.a + this.b + this.c;
     }
 
     get area() {
-        let halfP = 0.5 * (this.a + this.b + this.c);
+        let halfP = 0.5 * this.perimeter;
         let s = Math.sqrt(halfP * (halfP - this.a) * (halfP - this.b) * (halfP - this.c));
         return Number(s.toFixed(3));
     }
@@ -39,8 +38,7 @@ class Triangle {
 
 function getTriangle(a,b,c) {
     try {
-        let triangle = new Triangle(a, b, c);
-        return triangle;
+        return new Triangle(a, b, c);
     } catch(error) {
         return {
             get area() { return 'Ошибка! Треугольник не существует' },
