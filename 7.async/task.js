@@ -30,7 +30,16 @@ class AlarmClock {
 
     getCurrentFormattedTime() {
         let date = new Date;
-        return (date.getHours() + ':' + date.getMinutes());
+        let hour = date.getHours();
+        if (hour < 10) {
+            hour = '0' + hour;
+        }
+
+        let minute = date.getMinutes();
+        if (minute < 10) {
+            minute = '0' + minute;
+        }
+        return (hour + ':' + minute);
     }
 
     start() {
